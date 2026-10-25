@@ -44,7 +44,7 @@ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flath
 
 # ---- install VM manager ----
 log "Installing VM tools"
-sudo zypper install qemu-kvm libvirt virt-manager
+sudo zypper in qemu-kvm libvirt virt-manager
 sudo systemctl enable --now libvirtd
 
 # ---- install favorite fonts ----
@@ -54,6 +54,9 @@ sudo zypper in lato-fonts
 # ---- install favorite apps ----
 log "Installing favorite apps"
 sudo zypper in transmission-qt fastfetch
+
+# ---- build-essential for tumbleweed ----
+sudo zypper in -t pattern devel_basis
 
 # ---- installing zsh and git ----
 log "Installing zsh and git"
