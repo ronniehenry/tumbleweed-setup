@@ -48,8 +48,8 @@ sudo zypper in qemu-kvm libvirt virt-manager
 sudo systemctl enable --now libvirtd
 
 # ---- install favorite fonts ----
-log "Installing Lato for clearer UI fonts"
-sudo zypper in lato-fonts
+log "Installing Lato for clearer UI fonts, CJK fonts for non-English characters"
+sudo zypper in lato-fonts google-noto-sans-cjk-fonts
 
 # ---- install favorite apps ----
 log "Installing favorite apps"
