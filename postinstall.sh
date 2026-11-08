@@ -37,23 +37,18 @@ sudo zypper in opi
 sudo zypper refresh
 opi codecs
 
-# ---- install flatpak and enable user repository
-log "Installing flatpak and adding user repository"
-sudo zypper in flatpak
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 # ---- install VM manager ----
 log "Installing VM tools"
 sudo zypper in qemu-kvm libvirt virt-manager
 sudo systemctl enable --now libvirtd
 
 # ---- install favorite fonts ----
-log "Installing Lato for clearer UI fonts, CJK fonts for non-English characters"
-sudo zypper in lato-fonts google-noto-sans-cjk-fonts
+log "Installing favorite UI fonts"
+sudo zypper in lato-fonts jetbrains-mono-fonts
 
 # ---- install favorite apps ----
 log "Installing favorite apps"
-sudo zypper in transmission-qt fastfetch solaar
+sudo zypper in transmission-qt fastfetch
 
 # ---- installing zsh and git ----
 log "Installing zsh and git"
@@ -62,11 +57,6 @@ sudo zypper in zsh git
 # ---- build-essential for tumbleweed ----
 log "Installing basic developer tools pattern (devel_basis)"
 sudo zypper in -t pattern devel_basis
-
-# ---- enable audio service ----
-log "Enabling pipewire service"
-systemctl --user enable --now pipewire.service
-systemctl --user enable --now pipewire-pulse.service
 
 # ---- setup oh-my-zsh, default theme, and defalut shell ----
 log "Installing Oh My Zsh"
