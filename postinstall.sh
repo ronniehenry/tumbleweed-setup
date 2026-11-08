@@ -53,14 +53,20 @@ sudo zypper in lato-fonts google-noto-sans-cjk-fonts
 
 # ---- install favorite apps ----
 log "Installing favorite apps"
-sudo zypper in transmission-qt fastfetch
-
-# ---- build-essential for tumbleweed ----
-sudo zypper in -t pattern devel_basis
+sudo zypper in transmission-qt fastfetch solaar
 
 # ---- installing zsh and git ----
 log "Installing zsh and git"
 sudo zypper in zsh git
+
+# ---- build-essential for tumbleweed ----
+log "Installing basic developer tools pattern (devel_basis)"
+sudo zypper in -t pattern devel_basis
+
+# ---- enable audio service ----
+log "Enabling pipewire service"
+systemctl --user enable --now pipewire.service
+systemctl --user enable --now pipewire-pulse.service
 
 # ---- setup oh-my-zsh, default theme, and defalut shell ----
 log "Installing Oh My Zsh"
