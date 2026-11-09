@@ -1,31 +1,34 @@
-# OpenSUSE Tumbleweed Laptop Setup
+# OpenSUSE Tumbleweed Bootstrap
 
-Personal post-installation automation scripts for setting up a fresh OpenSUSE Tumbleweed installation on a laptop.
+A personal automation toolkit for quickly configuring a fresh OpenSUSE Tumbleweed installation.
 
-The goal is to reduce repetitive configuration work after a clean install and quickly restore a productive development workstation.
+This repository contains scripts that automate the repetitive post-installation tasks required to turn a clean OpenSUSE Tumbleweed installation into a ready-to-use workstation.
 
-## Included Scripts
+## Features
 
 ### postinstall.sh
 
-Performs common post-install tasks:
+Automates common workstation setup tasks:
 
 - Sets the system hostname
-- Updates the system using `zypper dup`
-- Installs `opi` and multimedia codecs
-- Installs KVM/QEMU virtualization tools
-- Enables the `libvirtd` service
-- Installs preferred fonts:
+- Performs a full Tumbleweed distribution upgrade
+- Installs OPI and multimedia codecs
+- Installs virtualization tools
+  - QEMU/KVM
+  - libvirt
+  - virt-manager
+- Enables and starts the libvirt service
+- Installs preferred desktop fonts
   - Lato
   - JetBrains Mono
-- Installs preferred applications:
+- Installs commonly used applications
   - Transmission
   - Fastfetch
-- Installs:
-  - Zsh
+- Installs development essentials
   - Git
-  - Development tools (`devel_basis` pattern)
-- Installs Oh My Zsh
+  - Zsh
+  - devel_basis pattern
+- Installs Oh My Zsh (if not already installed)
 - Configures the Oh My Zsh `bira` theme
 - Sets Zsh as the default shell
 - Adds the current user to:
@@ -35,21 +38,26 @@ Performs common post-install tasks:
 
 ### battserv.sh
 
-Installs and enables a custom systemd service that enforces a battery charging limit.
+Installs and enables a custom battery charge threshold service.
 
-This is intended for laptops that support battery charge thresholds, helping reduce long-term battery wear.
+The script:
 
-Actions performed:
+- Copies the systemd service file into `/etc/systemd/system`
+- Reloads systemd
+- Enables the service
+- Starts the service immediately
 
-- Copies `battery-threshold.service` into `/etc/systemd/system`
-- Enables the service through systemd
+This is intended to help preserve battery health on supported hardware.
+
+---
 
 ## Requirements
 
 - OpenSUSE Tumbleweed
-- Internet connection
+- Internet connectivity
 - sudo privileges
-- Git (if cloning the repository)
+
+---
 
 ## Usage
 
@@ -60,17 +68,17 @@ git clone https://github.com/ronniehenry/tumbleweed-setup.git
 cd tumbleweed-setup
 ```
 
-### Run the post-install script
+### Run the workstation bootstrap
 
 ```bash
 chmod +x postinstall.sh
-./postinstall.sh --host <your preferred hostname>
+./postinstall.sh --host host-name
 ```
 
 Example:
 
 ```bash
-./postinstall.sh --host tumbleweed-laptop
+./postinstall.sh --host vivobook
 ```
 
 ### Install battery threshold service
@@ -80,7 +88,9 @@ chmod +x battserv.sh
 ./battserv.sh
 ```
 
-## Directory Structure
+---
+
+## Repository Structure
 
 ```text
 .
@@ -90,37 +100,64 @@ chmod +x battserv.sh
     └── battery-threshold.service
 ```
 
+---
+
+## Design Goals
+
+The scripts are designed to be:
+
+- Simple
+- Readable
+- Idempotent where practical
+- Safe to rerun
+- Suitable for personal workstation provisioning
+
+This repository intentionally avoids configuration-management frameworks such as Ansible, Salt, or Nix in favor of lightweight Bash automation.
+
+---
+
+## Validation
+
+Before creating a release, run:
+
+```bash
+shellcheck postinstall.sh
+shellcheck battserv.sh
+```
+
+---
+
 ## Notes
 
-- The script assumes a fresh OpenSUSE Tumbleweed installation.
-- Some changes require a logout or reboot before taking effect.
-- Virtualization support may require BIOS/UEFI virtualization features to be enabled.
-- Battery threshold functionality depends on hardware and kernel support.
+- Some package installations may require user interaction.
+- Group membership changes require logout or reboot.
+- Battery threshold functionality depends on hardware support.
+- A system reboot is recommended after execution.
 
-## After Installation
+---
 
-Recommended next steps:
+## Roadmap
 
-1. Reboot the system.
-2. Verify group membership changes.
-3. Verify libvirt is running:
+### v0.9
 
-```bash
-systemctl status libvirtd
-```
+- Bootstrap automation
+- Battery threshold service installer
+- Error handling and validation
+- Dependency checking
+- Safer, repeatable execution
 
-4. Confirm the default shell:
+### v1.0
 
-```bash
-echo $SHELL
-```
+- ShellCheck-clean scripts
+- Tested on a fresh Tumbleweed installation
+- GitHub release
 
-5. Verify battery threshold service:
+---
 
-```bash
-systemctl status battery-threshold.service
-```
+## License
 
-## Disclaimer
+MIT License (recommended)
 
-These scripts reflect my personal workstation preferences and may not be suitable for every OpenSUSE installation. Review the scripts before executing them and adapt them to your own requirements.
+or
+
+GNU GPL v3 (if you want improvements to remain open source)
