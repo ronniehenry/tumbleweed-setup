@@ -21,6 +21,7 @@ Automates common workstation setup tasks:
 - Installs preferred desktop fonts
   - Lato
   - JetBrains Mono
+  - Noto Sans CJK
 - Installs commonly used applications
   - Transmission
   - Fastfetch
