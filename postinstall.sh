@@ -98,6 +98,7 @@ readonly PACKAGES=(
     lato-fonts
     jetbrains-mono-fonts
     google-noto-sans-cjk-fonts
+    google-noto-color-emoji-fonts
 )
 sudo zypper in -y "${PACKAGES[@]}"
 

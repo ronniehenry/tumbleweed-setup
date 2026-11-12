@@ -22,6 +22,7 @@ Automates common workstation setup tasks:
   - Lato
   - JetBrains Mono
   - Noto Sans CJK
+  - Noto Color Emoji
 - Installs commonly used applications
   - Transmission
   - Fastfetch
