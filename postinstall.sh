@@ -89,7 +89,7 @@ sudo zypper in -y qemu-kvm libvirt virt-manager
 sudo systemctl enable --now libvirtd
 
 # ---- install other desired packages ----
-log "Installing packages not inluded in default"
+log "Installing packages not included in default"
 readonly PACKAGES=(
     transmission-qt
     fastfetch
