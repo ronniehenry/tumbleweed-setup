@@ -97,6 +97,7 @@ readonly PACKAGES=(
     git
     lato-fonts
     jetbrains-mono-fonts
+    google-noto-sans-cjk-fonts
 )
 sudo zypper in -y "${PACKAGES[@]}"
 
