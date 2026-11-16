@@ -15,7 +15,8 @@ log() {
     printf '\n\033[1;32m==>\033[0m %s\n' "$*"
 }
 
-readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR
 
 # copy service script to systemd
 log "Copying service script to systemd"

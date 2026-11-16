@@ -13,20 +13,20 @@ Automates common workstation setup tasks:
 - Sets the system hostname
 - Performs a full Tumbleweed distribution upgrade
 - Installs OPI and multimedia codecs
-- Installs virtualization tools
+- Installs virtualization tools:
   - QEMU/KVM
   - libvirt
   - virt-manager
 - Enables and starts the libvirt service
-- Installs preferred desktop fonts
+- Installs preferred desktop fonts:
   - Lato
   - JetBrains Mono
   - Noto Sans CJK
   - Noto Color Emoji
-- Installs commonly used applications
+- Installs commonly used applications:
   - Transmission
   - Fastfetch
-- Installs development essentials
+- Installs development essentials:
   - Git
   - Zsh
   - devel_basis pattern
@@ -148,18 +148,18 @@ shellcheck battserv.sh
 - Dependency checking
 - Safer, repeatable execution
 
-### v1.0
-
-- ShellCheck-clean scripts
-- Tested on a fresh Tumbleweed installation
-- GitHub release
+#### v1.0
+- Initial stable release
 
 ---
 
 ## License
 
-MIT License (recommended)
+MIT License
 
-or
+---
 
-GNU GPL v3 (if you want improvements to remain open source)
+![ShellCheck](https://img.shields.io/badge/ShellCheck-Passing-brightgreen)
+![OpenSUSE](https://img.shields.io/badge/OpenSUSE-Tumbleweed-73BA25)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
